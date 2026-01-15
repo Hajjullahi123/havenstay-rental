@@ -43,6 +43,11 @@
     "prisma": "6.19.2",
     "vite": "^7.2.4"
   },
+  "overrides": {
+    "prisma": "6.19.2",
+    "@prisma/client": "6.19.2",
+    "@prisma/engines": "6.19.2"
+  },
   "prisma": {
     "seed": "node prisma/seed.js"
   }
