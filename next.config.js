@@ -1,18 +1,20 @@
-import withPWAInit from 'next-pwa';
-
-const withPWA = withPWAInit({
-  dest: 'public',
-  disable: process.env.NODE_ENV === 'development',
-  register: true,
-  skipWaiting: true,
-});
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // Turbopack config to silence Next.js 16 warning
+  turbopack: {},
   images: {
-    domains: ['placehold.co', 'images.unsplash.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'placehold.co',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
   },
 };
 
-export default withPWA(nextConfig);
+export default nextConfig;
