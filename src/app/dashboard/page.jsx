@@ -1,8 +1,8 @@
-import prisma from '../../lib/prisma';
+import prisma from '@/lib/prisma';
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from 'next/navigation';
-import TenantDashboardClient from '../../components/TenantDashboardClient';
+import TenantDashboardClient from '@/components/TenantDashboardClient';
 
 export const metadata = {
   title: 'My Dashboard | HavenStay',

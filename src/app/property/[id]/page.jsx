@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import prisma from '@/lib/prisma';
 import BookingClient from '@/components/BookingClient';
-import dynamic from 'next/dynamic';
+import PropertyMap from '@/components/MapWrapper';
 import {
   Wifi,
   Car,
@@ -29,9 +29,6 @@ const amenityIcons = {
   'Water Heater': <FlameKindling size={20} />,
 };
 
-const PropertyMap = dynamic(() => import('@/components/PropertyMap'), {
-  loading: () => <div style={{ height: '500px', width: '100%', background: 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '24px' }}>Loading Map...</div>
-});
 
 export async function generateMetadata({ params }) {
   const { id } = await params;

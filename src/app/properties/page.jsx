@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
-import prisma from '../../lib/prisma';
-import PropertiesBrowser from '../../components/PropertiesBrowser';
+import prisma from '@/lib/prisma';
+import PropertiesBrowser from '@/components/PropertiesBrowser';
 
 export const metadata = {
   title: 'All Properties | HavenStay',

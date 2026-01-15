@@ -75,13 +75,9 @@ const ModernWorkflow = () => {
           ))}
         </div>
       </div>
-      <style jsx>{`
-        @media (min-width: 1024px) {
-          .workflow-line { display: block !important; }
-        }
-      `}</style>
     </section>
   );
 };
+
 
 export default ModernWorkflow;
