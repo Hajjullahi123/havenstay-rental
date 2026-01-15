@@ -1,31 +1,36 @@
 ---
-description: Deploy HavenStay to Vercel + Neon
+description: Deploy HavenStay to Vercel + Supabase
 ---
 
-# Deploy HavenStay Rental Platform to Vercel + Neon
+# Deploy HavenStay Rental Platform to Vercel + Supabase
 
-This workflow guides you through deploying the HavenStay rental platform to Vercel (hosting) and Neon (PostgreSQL database).
+This workflow guides you through deploying the HavenStay rental platform to Vercel (hosting) and Supabase (PostgreSQL database).
 
 ## Prerequisites
 - GitHub account with the repository pushed
 - Vercel account (free tier available at https://vercel.com)
-- Neon account (free tier available at https://neon.tech)
+- Supabase account (free tier available at https://supabase.com)
 
-## Part 1: Set Up Neon Database
+## Part 1: Set Up Supabase Database
 
-### 1. Create Neon Database
-1. Go to https://neon.tech and sign up or log in
-2. Click "Create Project"
-3. Enter project details:
+### 1. Create Supabase Database
+1. Go to https://supabase.com and sign up or log in
+2. Click "New Project"
+3. Select your organization (or create one)
+4. Enter project details:
    - Project name: `havenstay-db`
+   - Database Password: Create a strong password (save it!)
    - Region: Choose closest to your users
-   - PostgreSQL version: 16 (latest)
-4. Click "Create Project"
+5. Click "Create new project"
+6. Wait 2-3 minutes for setup
 
 ### 2. Get Database Connection String
-1. After project creation, you'll see the connection string
-2. Copy the connection string (it looks like: `postgresql://user:password@ep-xxx.region.aws.neon.tech/neondb?sslmode=require`)
-3. Save this for later - you'll need it for Vercel environment variables
+1. After project creation, go to Settings → Database
+2. Scroll to "Connection string" section
+3. Select the **"Connection Pooling"** tab (important!)
+4. Copy the connection string (it looks like: `postgresql://postgres.[ref]:[password]@aws-0-[region].pooler.supabase.com:6543/postgres`)
+5. Replace `[YOUR-PASSWORD]` with your actual database password
+6. Save this for later - you'll need it for Vercel environment variables
 
 ## Part 2: Deploy to Vercel
 
