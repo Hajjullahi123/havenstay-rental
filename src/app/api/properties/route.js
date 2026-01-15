@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import prisma from "../../../lib/prisma";
+import prisma from "@/lib/prisma";
 
 export async function GET(req) {
   try {
@@ -27,7 +27,12 @@ export async function GET(req) {
       orderBy: { id: 'desc' }
     });
 
-    return NextResponse.json(properties);
+    const parsedProperties = properties.map(p => ({
+      ...p,
+      amenities: typeof p.amenities === 'string' ? JSON.parse(p.amenities) : p.amenities
+    }));
+
+    return NextResponse.json(parsedProperties);
   } catch (error) {
     console.error("Fetch properties error:", error);
     return NextResponse.json({ error: "Failed to fetch properties" }, { status: 500 });

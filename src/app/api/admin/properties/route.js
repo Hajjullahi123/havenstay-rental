@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../auth/[...nextauth]/route";
-import prisma from "../../../../lib/prisma";
+import prisma from "@/lib/prisma";
 
 export async function POST(req) {
   try {
@@ -28,13 +28,18 @@ export async function POST(req) {
         beds: parseInt(beds),
         baths: parseInt(baths),
         area,
-        amenities,
+        amenities: JSON.stringify(amenities),
         image,
         status: 'AVAILABLE'
       }
     });
 
-    return NextResponse.json(property, { status: 201 });
+    const responseProperty = {
+      ...property,
+      amenities: typeof property.amenities === 'string' ? JSON.parse(property.amenities) : property.amenities
+    };
+
+    return NextResponse.json(responseProperty, { status: 201 });
   } catch (error) {
     console.error("Admin add property error:", error);
     return NextResponse.json({ error: "Failed to add property" }, { status: 500 });

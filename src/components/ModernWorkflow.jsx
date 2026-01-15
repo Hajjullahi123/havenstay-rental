@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { Search, Calendar, Key, CheckCircle2 } from 'lucide-react';
 

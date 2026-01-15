@@ -36,7 +36,7 @@ model Property {
   beds        Int
   baths       Int
   area        String
-  amenities   String[]
+  amenities   String
   image       String
   status      String    @default("AVAILABLE")
   featured    Boolean   @default(false)

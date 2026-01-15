@@ -33,6 +33,22 @@ const TenantDashboard = async () => {
     })
   ]);
 
+  const parsedBookings = bookings.map(b => ({
+    ...b,
+    property: {
+      ...b.property,
+      amenities: typeof b.property.amenities === 'string' ? JSON.parse(b.property.amenities) : b.property.amenities
+    }
+  }));
+
+  const parsedFavorites = favorites.map(f => ({
+    ...f,
+    property: {
+      ...f.property,
+      amenities: typeof f.property.amenities === 'string' ? JSON.parse(f.property.amenities) : f.property.amenities
+    }
+  }));
+
   return (
     <div style={{ paddingTop: '120px', paddingBottom: '80px', paddingLeft: '5%', paddingRight: '5%', minHeight: '100vh' }}>
       <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
@@ -46,7 +62,7 @@ const TenantDashboard = async () => {
           </div>
         </div>
 
-        <TenantDashboardClient bookings={bookings} favorites={favorites} />
+        <TenantDashboardClient bookings={parsedBookings} favorites={parsedFavorites} />
       </div>
     </div>
   );

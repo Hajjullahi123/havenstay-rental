@@ -14,6 +14,10 @@ const PropertiesPage = async () => {
       where: { status: 'AVAILABLE' },
       orderBy: { id: 'desc' }
     });
+    properties = properties.map(p => ({
+      ...p,
+      amenities: typeof p.amenities === 'string' ? JSON.parse(p.amenities) : p.amenities
+    }));
   } catch (error) {
     console.error("Error fetching properties:", error);
   }

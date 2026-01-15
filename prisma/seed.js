@@ -1,4 +1,4 @@
-const { PrismaClient } = require('@prisma/client');
+import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
@@ -84,7 +84,10 @@ async function main() {
 
   for (const property of properties) {
     await prisma.property.create({
-      data: property
+      data: {
+        ...property,
+        amenities: JSON.stringify(property.amenities)
+      }
     });
   }
 

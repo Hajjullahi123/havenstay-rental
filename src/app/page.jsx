@@ -26,6 +26,11 @@ const Home = async () => {
         orderBy: { id: 'desc' }
       });
     }
+
+    featuredProperties = featuredProperties.map(p => ({
+      ...p,
+      amenities: typeof p.amenities === 'string' ? JSON.parse(p.amenities) : p.amenities
+    }));
   } catch (e) {
     console.error("Home fetch error:", e);
   }

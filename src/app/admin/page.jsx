@@ -34,6 +34,19 @@ const AdminDashboard = async () => {
     ])
   ]);
 
+  const parsedProperties = properties.map(p => ({
+    ...p,
+    amenities: typeof p.amenities === 'string' ? JSON.parse(p.amenities) : p.amenities
+  }));
+
+  const parsedBookings = bookings.map(b => ({
+    ...b,
+    property: {
+      ...b.property,
+      amenities: typeof b.property.amenities === 'string' ? JSON.parse(b.property.amenities) : b.property.amenities
+    }
+  }));
+
   const stats = [
     { label: 'Total Revenue', value: `$${(statsData[0]._sum.amount || 0).toLocaleString()}`, icon: '💰' },
     { label: 'Active Bookings', value: bookings.length.toString(), icon: '📅' },
@@ -57,7 +70,7 @@ const AdminDashboard = async () => {
         ))}
       </div>
 
-      <AdminDashboardClient initialProperties={properties} initialBookings={bookings} />
+      <AdminDashboardClient initialProperties={parsedProperties} initialBookings={parsedBookings} />
     </div>
   );
 };
