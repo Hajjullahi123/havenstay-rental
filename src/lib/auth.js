@@ -1,10 +1,13 @@
-import PrismaAdapter from "@next-auth/prisma-adapter";
+import * as PrismaAdapterModule from "@next-auth/prisma-adapter";
 import prisma from "@/lib/prisma";
 import CredentialsProvider from "next-auth/providers/credentials";
 import * as bcrypt from "bcryptjs";
 
+// Robust adapter resolution for Next.js 15 / NextAuth v4 compatibility
+const PrismaAdapter = PrismaAdapterModule.PrismaAdapter || PrismaAdapterModule.default;
+
 export const authOptions = {
-  adapter: PrismaAdapter(prisma),
+  adapter: PrismaAdapter ? PrismaAdapter(prisma) : undefined,
   providers: [
     CredentialsProvider({
       name: "credentials",
@@ -25,7 +28,9 @@ export const authOptions = {
           throw new Error("User not found");
         }
 
-        const isPasswordCorrect = await bcrypt.compare(
+        // Handle possible bcrypt default/namespace differences
+        const compare = bcrypt.compare || bcrypt.default?.compare;
+        const isPasswordCorrect = await compare(
           credentials.password,
           user.password
         );
