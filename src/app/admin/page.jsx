@@ -5,6 +5,8 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
 import { redirect } from 'next/navigation';
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: 'Admin Control Center | HavenStay',
 };
@@ -57,7 +59,7 @@ const AdminDashboard = async () => {
   return (
     <div style={{ paddingTop: '100px', paddingBottom: '80px', paddingLeft: '5%', paddingRight: '5%', minHeight: '100vh', background: 'var(--bg-main)' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '2.5rem' }}>Agency <span style={{ color: 'var(--accent)' }}>Control Center</span></h1>
+        <h1 style={{ fontSize: '2.5rem' }}>HavenStay <span style={{ color: 'var(--accent)' }}>Control Center</span></h1>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', marginBottom: '40px' }}>

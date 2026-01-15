@@ -4,6 +4,8 @@ import { authOptions } from "@/lib/auth";
 import { redirect } from 'next/navigation';
 import TenantDashboardClient from '@/components/TenantDashboardClient';
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: 'My Dashboard | HavenStay',
 };
