@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build --webpack",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
     "render:build": "npm install && npx prisma generate && npx prisma db push && npm run build"
@@ -20,7 +20,7 @@
     "effect": "^3.19.14",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.562.0",
-    "next": "^16.1.1",
+    "next": "15.1.7",
     "next-auth": "^4.24.13",
     "next-pwa": "^5.6.0",
     "nodemailer": "^7.0.12",
@@ -46,7 +46,8 @@
   "overrides": {
     "prisma": "6.19.2",
     "@prisma/client": "6.19.2",
-    "@prisma/engines": "6.19.2"
+    "@prisma/engines": "6.19.2",
+    "source-map-js": "1.2.0"
   },
   "prisma": {
     "seed": "node prisma/seed.js"
