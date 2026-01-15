@@ -1,10 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // Use webpack instead of Turbopack for stable builds
-  experimental: {
-    turbo: false,
-  },
   images: {
     remotePatterns: [
       {
