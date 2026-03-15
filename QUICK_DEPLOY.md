@@ -25,6 +25,7 @@
 
 ## Step 2: Deploy to Vercel (5 min)
 
+
 ### 🔗 Go to: https://vercel.com
 
 1. **Sign up** with GitHub
